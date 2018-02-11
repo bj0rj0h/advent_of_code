@@ -1,8 +1,25 @@
 package one
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+)
 
-func Test(){
+func Run(){
 	fmt.Println("hello from package")
+	//getTestData("")
 
+}
+
+func getTestData(path string) ([]byte,error){
+	dat, err := ioutil.ReadFile(path)
+	checkErr(err)
+
+	return dat,err
+}
+
+func checkErr(e error){
+	if e != nil{
+		fmt.Println(e)
+	}
 }
