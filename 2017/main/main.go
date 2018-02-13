@@ -6,6 +6,6 @@ import (
 )
 
 func main(){
-	fmt.Println("Hello from main")
+	fmt.Println("**************** Welcome to the adventure ****************")
 	one.Run()
 }
