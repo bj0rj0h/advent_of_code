@@ -3,10 +3,14 @@ package two
 import (
 	"io/ioutil"
 	"strconv"
+	"math"
+	"fmt"
 )
 
 func Run(){
-
+	data,_ := getData("2017/two/input.txt")
+	slices := bytesToSlice(data)
+	fmt.Println(calcSumDiff(slices))
 }
 
 func getData(path string) ([]byte,error){
@@ -43,6 +47,28 @@ func bytesToSlice(bytes []byte) [][]int {
 		}
 	}
 	return data
+}
+
+func calcDiff(slice []int) int {
+	high := math.MinInt64
+	low := math.MaxInt64
+	for _,val := range slice{
+		if val < low{
+			low = val
+		}
+		if val > high{
+			high = val
+		}
+	}
+	return high - low
+}
+
+func calcSumDiff(ints [][]int) int {
+	var sum int
+	for _,slice:= range ints{
+		sum += calcDiff(slice)
+	}
+	return sum
 }
 
 func checkErr(e error) {
