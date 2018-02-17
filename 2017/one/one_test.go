@@ -22,27 +22,21 @@ func TestGetTestData(t *testing.T) {
 
 func TestGetSum(t *testing.T) {
 
-	data, _ := getTestData("data/testDataOne.txt")
-	expected := 4
+	data, _ := getTestData("data/input.txt")
+	expected := 1251
 
-	if res := getSum(data); res != expected {
+	if res := getSum(data,1); res != expected {
 		t.Errorf("Error while getting sum. Got: %d Expected: %d\n", res, expected)
 	}
 
 }
 
 func TestGetSumSecond(t *testing.T){
-	data, _ := getTestData("data/testDataTwo.txt")
-	expected := 6
+	data, _ := getTestData("data/input.txt")
+	expected := 1244
 
-	if res := getSumSecond(data); res != expected {
+	if res := getSum(data,2); res != expected {
 		t.Errorf("Error while getting sum. Got: %d Expected: %d\n", res, expected)
 	}
 
-	data, _ = getTestData("data/testDataThree.txt")
-	expected = 4
-
-	if res := getSumSecond(data); res != expected {
-		t.Errorf("Error while getting sum. Got: %d Expected: %d\n", res, expected)
-	}
 }
