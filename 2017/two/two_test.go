@@ -11,7 +11,8 @@ func TestGetData(t *testing.T){
 }
 
 func TestBytesToSlice(t *testing.T){
-	data,_ := getData("testData.txt")
+	data,_ := getData("input.txt")
+	fmt.Println(data)
 	slice := bytesToSlice(data)
 	fmt.Println(slice)
 }
