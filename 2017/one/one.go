@@ -28,7 +28,6 @@ func getSum(bytes []byte) int {
 		if int(r-'0') == cmp {
 			sum += int(r - '0')
 		}
-
 	}
 
 	return sum
