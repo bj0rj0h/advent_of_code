@@ -9,9 +9,9 @@ func Run() {
 	data, err := getTestData("2017/one/data/input.txt")
 	checkErr(err)
 	result := getSum(data,1)
-	fmt.Printf("ONE-1: Result is %d: \n", result)
+	fmt.Printf("ONE-1: Result is: %d \n", result)
 	result = getSum(data,2)
-	fmt.Printf("ONE-2: Result is %d: \n", result)
+	fmt.Printf("ONE-2: Result is: %d \n", result)
 
 }
 func getSum(bytes []byte,challenge int) int {
