@@ -11,7 +11,8 @@ import (
 func Run(){
 	data,_ := getData("2017/two/input.txt")
 	slices := bytesToMatrix(data)
-	fmt.Println(calcSumDiff(slices))
+	fmt.Printf("TWO-1: Result is: %d \n",calcSumDiff(slices))
+	fmt.Printf("TWO-2: Result is: %d \n",getSumOfAllSlices(slices))
 }
 
 func getData(path string) ([]byte,error){
@@ -77,6 +78,31 @@ func calcSumDiff(ints [][]int) int {
 	}
 	return sum
 }
+
+func getSumOfEvenDivsForSlices(slice []int) int{
+
+	var sum int
+	for i,val := range slice{
+		for j,inner := range slice{
+			if i != j{
+				if val%inner==0{
+					sum += val/inner
+				}
+			}
+		}
+	}
+	return sum
+}
+
+func getSumOfAllSlices(slices [][]int) int{
+	var sum int
+	for _,slice := range slices{
+		sum += getSumOfEvenDivsForSlices(slice)
+	}
+	return sum
+
+}
+
 
 func checkErr(e error) {
 	if e != nil {

@@ -51,6 +51,27 @@ func TestCalcSumOfDiffs(t *testing.T){
 
 
 
+func TestGetSumOfEvenDivs(t *testing.T){
+	slice := []int{5,9,2,8}
+	result := getSumOfEvenDivsForSlices(slice)
+	expected := 4
+	if result != expected{
+		t.Errorf("Got: %d Expected: %d\n",result,expected)
+	}
+}
+
+func TestGetSumOfAllSlices(t *testing.T){
+	data,_ := getData("testData2.txt")
+	slices := bytesToMatrix(data)
+	result := getSumOfAllSlices(slices)
+	expected := 9
+	if result != expected{
+		t.Errorf("Got: %d Expected: %d\n",result,expected)
+	}
+}
+
+
+
 
 
 
