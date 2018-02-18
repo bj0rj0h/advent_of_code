@@ -1,7 +1,7 @@
 package three
 
 import (
-	"fmt"C
+	"fmt"
 )
 
 func Run(){
