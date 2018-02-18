@@ -49,8 +49,6 @@ func TestCalcSumOfDiffs(t *testing.T){
 	}
 }
 
-
-
 func TestGetSumOfEvenDivs(t *testing.T){
 	slice := []int{5,9,2,8}
 	result := getSumOfEvenDivsForSlices(slice)
@@ -69,10 +67,3 @@ func TestGetSumOfAllSlices(t *testing.T){
 		t.Errorf("Got: %d Expected: %d\n",result,expected)
 	}
 }
-
-
-
-
-
-
-
