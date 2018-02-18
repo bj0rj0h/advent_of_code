@@ -5,6 +5,7 @@ import (
 	"strconv"
 	"math"
 	"fmt"
+	"strings"
 )
 
 func Run(){
@@ -22,28 +23,30 @@ func getData(path string) ([]byte,error){
 func bytesToSlice(bytes []byte) [][]int {
 	data := make([][]int, 0)
 	inner := make([]int,0)
-	s := ""
+	var builder strings.Builder
 	prevSpace := false
 	for _,b := range bytes{
 		if b == 32 || b == 9{
 			if !prevSpace {
 				prevSpace = true
-				intS,err := strconv.Atoi(s)
+				str := builder.String()
+				intS,err := strconv.Atoi(str)
 				checkErr(err)
-				inner = append(inner, intS)
-				s = ""
+				inner = append(inner,intS)
+				builder.Reset()
 			}
 		}else if b == 10 {
 			prevSpace = false
-			intS,err := strconv.Atoi(s)
+			str := builder.String()
+			intS,err := strconv.Atoi(str)
 			checkErr(err)
 			inner = append(inner, intS)
-			s = ""
+			builder.Reset()
 			data = append(data,inner)
 			inner = make([]int,0)
 		}else {
 			prevSpace = false
-			s += string(b)
+			builder.WriteByte(b)
 		}
 	}
 	return data
