@@ -1,8 +1,7 @@
 package three
 
 import (
-	"fmt"
-
+	"fmt"C
 )
 
 func Run(){
@@ -10,22 +9,18 @@ func Run(){
 }
 
 func generateGrid(max int)[][]int{
-	numSquares := calcGridSize(max)
+	numSquares := calcGridSize(max,0,1)
 	fmt.Println("NumSquares: %d",numSquares)
 	return make([][]int, numSquares*2+1)
 }
 
-func calcGridSize(max int) int{
+func calcGridSize(neededMaxVal,gridSize,gridMax int) int{
 
-
-
-	gridMax := 1
-	squares := 0
-	for gridMax < max{
-		squares += 1
-		gridMax = 8*squares+gridMax
+	if gridMax < neededMaxVal {
+		gridMax = 8*(gridSize+1)+gridMax
+		return calcGridSize(neededMaxVal,gridSize+1,gridMax)
+	}else{
+		return gridSize
 	}
-
-	return squares
 
 }

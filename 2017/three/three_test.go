@@ -18,7 +18,7 @@ func TestGenerateGrid(t *testing.T){
 }
 
 func TestCalcGridSize(t *testing.T){
-	result := calcGridSize(23)
+	result := calcGridSize(23,0,1)
 	expected := 2
 	if expected != result {
 		t.Errorf("Expected: %d Got: %d",expected, result)
