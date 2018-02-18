@@ -61,10 +61,10 @@ func TestGetSumOfEvenDivs(t *testing.T){
 }
 
 func TestGetSumOfAllSlices(t *testing.T){
-	data,_ := getData("testData2.txt")
+	data,_ := getData("input.txt")
 	slices := bytesToMatrix(data)
 	result := getSumOfAllSlices(slices)
-	expected := 9
+	expected := 214
 	if result != expected{
 		t.Errorf("Got: %d Expected: %d\n",result,expected)
 	}
