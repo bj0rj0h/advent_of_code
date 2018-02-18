@@ -10,7 +10,7 @@ import (
 
 func Run(){
 	data,_ := getData("2017/two/input.txt")
-	slices := bytesToSlice(data)
+	slices := bytesToMatrix(data)
 	fmt.Println(calcSumDiff(slices))
 }
 
@@ -20,7 +20,7 @@ func getData(path string) ([]byte,error){
 	return dat, err
 }
 
-func bytesToSlice(bytes []byte) [][]int {
+func bytesToMatrix(bytes []byte) [][]int {
 	data := make([][]int, 0)
 	inner := make([]int,0)
 	var builder strings.Builder
@@ -29,17 +29,13 @@ func bytesToSlice(bytes []byte) [][]int {
 		if b == 32 || b == 9{
 			if !prevSpace {
 				prevSpace = true
-				str := builder.String()
-				intS,err := strconv.Atoi(str)
-				checkErr(err)
+				intS := getIntFromBuilder(&builder)
 				inner = append(inner,intS)
 				builder.Reset()
 			}
 		}else if b == 10 {
 			prevSpace = false
-			str := builder.String()
-			intS,err := strconv.Atoi(str)
-			checkErr(err)
+			intS := getIntFromBuilder(&builder)
 			inner = append(inner, intS)
 			builder.Reset()
 			data = append(data,inner)
@@ -50,6 +46,14 @@ func bytesToSlice(bytes []byte) [][]int {
 		}
 	}
 	return data
+}
+
+func getIntFromBuilder(builder *strings.Builder) int{
+	str := builder.String()
+	intS,err := strconv.Atoi(str)
+	checkErr(err)
+
+	return intS
 }
 
 func calcDiff(slice []int) int {

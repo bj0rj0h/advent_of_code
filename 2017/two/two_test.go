@@ -18,7 +18,7 @@ func TestGetData(t *testing.T){
 
 func TestBytesToSlice(t *testing.T){
 	data,_ := getData("testData.txt")
-	slices := bytesToSlice(data)
+	slices := bytesToMatrix(data)
 	var sum int
 	expected := 198
 	for _,slice := range slices{
@@ -33,7 +33,7 @@ func TestBytesToSlice(t *testing.T){
 
 func TestCalcDiff(t *testing.T){
 	data,_ := getData("testData.txt")
-	slices := bytesToSlice(data)
+	slices := bytesToMatrix(data)
 	expected := 6
 	if diff := calcDiff(slices[1]); diff != expected{
 		t.Errorf("Error while getting diff. Got %d expected %d\n",diff,expected)
@@ -42,7 +42,7 @@ func TestCalcDiff(t *testing.T){
 
 func TestCalcSumOfDiffs(t *testing.T){
 	data,_ := getData("testData.txt")
-	slices := bytesToSlice(data)
+	slices := bytesToMatrix(data)
 	expected := 101
 	if diff := calcSumDiff(slices); diff != expected{
 		t.Errorf("Error while getting diff. Got %d expected %d\n",diff,expected)
