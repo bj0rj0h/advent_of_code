@@ -24,3 +24,13 @@ func TestCalcGridSize(t *testing.T){
 		t.Errorf("Expected: %d Got: %d",expected, result)
 	}
 }
+
+func TestCalculateWalkingDistance(t *testing.T){
+	startVal := 23
+	grid:= generateGrid(startVal)
+	result := calculateWalkingDistance(startVal,grid)
+	expected := 2
+	if expected != result {
+		t.Errorf("Expected: %d Got: %d",expected, result)
+	}
+}
