@@ -29,7 +29,7 @@ func TestCalcGridSize(t *testing.T) {
 func TestCalculateWalkingDistance_1_PASS(t *testing.T) {
 	startVal := 1
 	grid := generateGrid(startVal)
-	result := calculateWalkingDistance(startVal, grid)
+	result := calculateWalkingDistance(1, startVal, grid)
 	expected := 0
 	if expected != result {
 		t.Errorf("Expected: %d Got: %d", expected, result)
@@ -39,33 +39,17 @@ func TestCalculateWalkingDistance_1_PASS(t *testing.T) {
 func TestCalculateWalkingDistance_12_PASS(t *testing.T) {
 	startVal := 12
 	grid := generateGrid(startVal)
-	result := calculateWalkingDistance(startVal, grid)
+	result := calculateWalkingDistance(startVal, 25, grid)
 	expected := 3
 	if expected != result {
 		t.Errorf("Expected: %d Got: %d", expected, result)
 	}
 }
 
-func TestGetQPost(t *testing.T) {
-
-	startVal := 12
-	grid := generateGrid(startVal)
-	q1, q2 := getQPos(startVal, grid)
-
-	expectedQ1, expectedQ2 := 4, 3
-
-	if q1 != expectedQ1 {
-		t.Errorf("Expected q1 to be: %d Got: %d", expectedQ1, q1)
-	}
-	if q2 != expectedQ2 {
-		t.Errorf("Expected q2 to be: %d Got: %d", expectedQ2, q2)
-	}
-}
-
 func TestPopulateGrid(t *testing.T) {
 	grid := generateGrid(12)
 	expectedQ1, expectedQ2 := 4, 3
-	q1, q2 := populateGrid(12, 25, grid)
+	q1, q2 := firstHalf(12, 25, grid)
 
 	if q1 != expectedQ1 {
 		t.Errorf("Expected q1 to be: %d Got: %d", expectedQ1, q1)

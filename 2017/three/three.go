@@ -23,10 +23,6 @@ func generateGrid(max int) [][]int {
 	return grid
 }
 
-func populateGrid(desiredValue int, maxVal int, grid [][]int) (int, int) {
-	return firstHalf(desiredValue, maxVal, grid)
-}
-
 func firstHalf(desiredValue int, value int, grid [][]int) (int, int) {
 
 	var qx, qy int
@@ -85,10 +81,6 @@ func firstHalf(desiredValue int, value int, grid [][]int) (int, int) {
 	return qx, qy
 }
 
-func secondHalf(grid [][]int) [][]int {
-	return grid
-}
-
 func calcGridSize(neededMaxVal, gridSize, gridMax int) int {
 
 	if gridMax < neededMaxVal {
@@ -98,25 +90,10 @@ func calcGridSize(neededMaxVal, gridSize, gridMax int) int {
 	return gridSize
 }
 
-func calculateWalkingDistance(startVal int, grid [][]int) int {
-	//var q1, q2 = getQPos(startVal, grid)
+func calculateWalkingDistance(desiredValue int, startVal int, grid [][]int) int {
+
+	qx, qy := firstHalf(desiredValue, startVal, grid)
+	fmt.Println(qx, qy)
 
 	return 0
-
-}
-
-func getQPos(startVal int, grid [][]int) (int, int) {
-
-	var q1, q2 int
-
-	for i, e := range grid {
-		for j, je := range e {
-			if je == startVal {
-				q1, q2 = i, j
-			}
-		}
-	}
-
-	return q1, q2
-
 }
