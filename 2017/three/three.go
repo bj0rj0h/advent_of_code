@@ -131,12 +131,14 @@ func calculateSumOfAdjacents(maxVal int) int {
 		}
 
 		//LEFT
-		/*		for i := 0;i<
-				y = 1 + (2 * (gridSize - 1))
-				grid[y][x] = getSumOfAdjacents(grid, x, y)
-				if grid[y][x] > maxVal {
-					return grid[y][x]
-				}*/
+		for i := 0; i < (x * gridSize); i++ {
+			x--
+			grid[y][x] = getSumOfAdjacents(grid, x, y)
+			if grid[y][x] > maxVal {
+				return grid[y][x]
+			}
+		}
+
 		//DOWN
 		//RIGHT
 
