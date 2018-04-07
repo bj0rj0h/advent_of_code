@@ -2,6 +2,7 @@ package three
 
 import (
 	"fmt"
+	"math"
 )
 
 type State struct {
@@ -10,7 +11,11 @@ type State struct {
 }
 
 func Run() {
-
+	desiredValue := 265149
+	grid := generateGrid(desiredValue)
+	gridMax := len(grid) * len(grid)
+	distance := calculateWalkingDistance(desiredValue, gridMax, grid)
+	fmt.Printf("distance:%d\n", distance)
 }
 
 func generateGrid(max int) [][]int {
@@ -93,7 +98,13 @@ func calcGridSize(neededMaxVal, gridSize, gridMax int) int {
 func calculateWalkingDistance(desiredValue int, startVal int, grid [][]int) int {
 
 	qx, qy := firstHalf(desiredValue, startVal, grid)
+	px, py := (len(grid)-1)/2, (len(grid)-1)/2
+
+	xSum := math.Abs(float64(px) - float64(qx))
+	ySum := math.Abs(float64(py) - float64(qy))
+
+	distance := int(xSum + ySum)
 	fmt.Println(qx, qy)
 
-	return 0
+	return distance
 }

@@ -46,6 +46,36 @@ func TestCalculateWalkingDistance_12_PASS(t *testing.T) {
 	}
 }
 
+func TestCalculateWalkingDistance_23_PASS(t *testing.T) {
+	startVal := 23
+	grid := generateGrid(startVal)
+	gridMax := len(grid) * len(grid)
+	result := calculateWalkingDistance(startVal, gridMax, grid)
+	expected := 2
+	if expected != result {
+		t.Errorf("Expected: %d Got: %d", expected, result)
+	}
+}
+func TestCalculateWalkingDistance_16_PASS(t *testing.T) {
+	startVal := 16
+	grid := generateGrid(startVal)
+	gridMax := len(grid) * len(grid)
+	result := calculateWalkingDistance(startVal, gridMax, grid)
+	expected := 3
+	if expected != result {
+		t.Errorf("Expected: %d Got: %d", expected, result)
+	}
+}
+func TestCalculateWalkingDistance_18_PASS(t *testing.T) {
+	startVal := 18
+	grid := generateGrid(startVal)
+	gridMax := len(grid) * len(grid)
+	result := calculateWalkingDistance(startVal, gridMax, grid)
+	expected := 3
+	if expected != result {
+		t.Errorf("Expected: %d Got: %d", expected, result)
+	}
+}
 func TestPopulateGrid(t *testing.T) {
 	grid := generateGrid(12)
 	expectedQ1, expectedQ2 := 4, 3
