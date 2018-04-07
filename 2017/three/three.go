@@ -108,3 +108,52 @@ func calculateWalkingDistance(desiredValue int, startVal int, grid [][]int) int 
 
 	return distance
 }
+func calculateSumOfAdjacents(maxVal int) int {
+
+	grid := make([][]int, 101)
+	gridSize := 1
+	for i := range grid {
+		grid[i] = make([]int, 101)
+	}
+	x := 50
+	y := 50
+	grid[y][x] = 1
+	x = x + 1
+	grid[y][x] = 1
+	for {
+		//UP
+		for i := 0; i < (1 + (2 * (gridSize - 1))); i++ {
+			y++
+			grid[y][x] = getSumOfAdjacents(grid, x, y)
+			if grid[y][x] > maxVal {
+				return grid[y][x]
+			}
+		}
+
+		//LEFT
+		/*		for i := 0;i<
+				y = 1 + (2 * (gridSize - 1))
+				grid[y][x] = getSumOfAdjacents(grid, x, y)
+				if grid[y][x] > maxVal {
+					return grid[y][x]
+				}*/
+		//DOWN
+		//RIGHT
+
+	}
+}
+
+func getSumOfAdjacents(grid [][]int, x, y int) int {
+	sum := 0
+
+	sum += grid[y][x+1]
+	sum += grid[y+1][x+1]
+	sum += grid[y+1][x]
+	sum += grid[y+1][x-1]
+	sum += grid[y][x-1]
+	sum += grid[y-1][x-1]
+	sum += grid[y-1][x]
+	sum += grid[y-1][x+1]
+
+	return sum
+}
