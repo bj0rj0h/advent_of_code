@@ -90,3 +90,22 @@ func TestPopulateGrid(t *testing.T) {
 
 	fmt.Println("done")
 }
+
+func TestCalculateSumOfAdjacents23_PASS(t *testing.T) {
+	maxVal := 23
+	result := calculateSumOfAdjacents(maxVal)
+
+	if result != 25 {
+		t.Errorf("Expected result to be: %d Got: %d", 25, result)
+	}
+
+}
+func TestCalculateSumOfAdjacents747_PASS(t *testing.T) {
+	maxVal := 265149
+	result := calculateSumOfAdjacents(maxVal)
+
+	if result != 122 {
+		t.Errorf("Expected result to be: %d Got: %d", 122, result)
+	}
+
+}

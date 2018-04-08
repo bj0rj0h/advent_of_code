@@ -16,6 +16,7 @@ func Run() {
 	gridMax := len(grid) * len(grid)
 	distance := calculateWalkingDistance(desiredValue, gridMax, grid)
 	fmt.Printf("distance:%d\n", distance)
+	calculateSumOfAdjacents(59)
 }
 
 func generateGrid(max int) [][]int {
@@ -126,6 +127,7 @@ func calculateSumOfAdjacents(maxVal int) int {
 			y++
 			grid[y][x] = getSumOfAdjacents(grid, x, y)
 			if grid[y][x] > maxVal {
+				fmt.Printf("Result: %d\n", grid[y][x])
 				return grid[y][x]
 			}
 		}
@@ -135,6 +137,7 @@ func calculateSumOfAdjacents(maxVal int) int {
 			x--
 			grid[y][x] = getSumOfAdjacents(grid, x, y)
 			if grid[y][x] > maxVal {
+				fmt.Printf("Result: %d\n", grid[y][x])
 				return grid[y][x]
 			}
 		}
@@ -144,6 +147,7 @@ func calculateSumOfAdjacents(maxVal int) int {
 			y--
 			grid[y][x] = getSumOfAdjacents(grid, x, y)
 			if grid[y][x] > maxVal {
+				fmt.Printf("Result: %d\n", grid[y][x])
 				return grid[y][x]
 			}
 		}
@@ -153,23 +157,34 @@ func calculateSumOfAdjacents(maxVal int) int {
 			x++
 			grid[y][x] = getSumOfAdjacents(grid, x, y)
 			if grid[y][x] > maxVal {
+				fmt.Printf("Result: %d\n", grid[y][x])
 				return grid[y][x]
 			}
 		}
+		gridSize++
 	}
 }
 
 func getSumOfAdjacents(grid [][]int, x, y int) int {
 	sum := 0
+	fmt.Printf("x:%d ,y:%d \n", x, y)
 
 	sum += grid[y][x+1]
+	fmt.Printf("val:%d  sum1: %d\n", grid[y][x+1], sum)
 	sum += grid[y+1][x+1]
+	fmt.Printf("val:%d sum2: %d\n", grid[y+1][x+1], sum)
 	sum += grid[y+1][x]
+	fmt.Printf("val:%d sum3: %d\n", grid[y+1][x], sum)
 	sum += grid[y+1][x-1]
+	fmt.Printf("val:%d sum4: %d\n", grid[y+1][x-1], sum)
 	sum += grid[y][x-1]
+	fmt.Printf("val:%d sum5: %d\n", grid[y][x-1], sum)
 	sum += grid[y-1][x-1]
+	fmt.Printf("val:%d sum6: %d\n", grid[y-1][x-1], sum)
 	sum += grid[y-1][x]
+	fmt.Printf("val:%d sum7: %d\n", grid[y-1][x], sum)
 	sum += grid[y-1][x+1]
+	fmt.Printf("val:%d sum8: %d\n\n", grid[y-1][x+1], sum)
 
 	return sum
 }
