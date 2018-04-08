@@ -100,12 +100,35 @@ func TestCalculateSumOfAdjacents23_PASS(t *testing.T) {
 	}
 
 }
+func TestCalculateSumOfAdjacents54_PASS(t *testing.T) {
+	maxVal := 54
+	result := calculateSumOfAdjacents(maxVal)
+	expected := 57
+	if result != expected {
+		t.Errorf("Expected result to be: %d Got: %d", expected, result)
+	}
+}
+func TestCalculateSumOfAdjacents330_PASS(t *testing.T) {
+	maxVal := 330
+	result := calculateSumOfAdjacents(maxVal)
+	expected := 351
+	if result != expected {
+		t.Errorf("Expected result to be: %d Got: %d", expected, result)
+	}
+}
 func TestCalculateSumOfAdjacents747_PASS(t *testing.T) {
+	maxVal := 747
+	result := calculateSumOfAdjacents(maxVal)
+	expected := 806
+	if result != expected {
+		t.Errorf("Expected result to be: %d Got: %d", expected, result)
+	}
+}
+func TestCalculateSumOfAdjacents266330_PASS(t *testing.T) {
 	maxVal := 265149
 	result := calculateSumOfAdjacents(maxVal)
-
-	if result != 122 {
-		t.Errorf("Expected result to be: %d Got: %d", 122, result)
+	expected := 266330
+	if result != expected {
+		t.Errorf("Expected result to be: %d Got: %d", expected, result)
 	}
-
 }
