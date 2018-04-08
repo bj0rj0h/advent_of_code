@@ -5,23 +5,18 @@ import (
 	"math"
 )
 
-type State struct {
-	direction rune
-	steps     int
-}
-
+//Run is the main entry point for day 3
 func Run() {
 	desiredValue := 265149
 	grid := generateGrid(desiredValue)
 	gridMax := len(grid) * len(grid)
 	distance := calculateWalkingDistance(desiredValue, gridMax, grid)
-	fmt.Printf("distance:%d\n", distance)
-	calculateSumOfAdjacents(59)
+	fmt.Printf("THREE-1: Result is:%d\n", distance)
+	fmt.Printf("THREE-2: Result is:%d\n", calculateSumOfAdjacents(265149))
 }
 
 func generateGrid(max int) [][]int {
 	numSquares := calcGridSize(max, 0, 1)
-	fmt.Printf("NumSquares: %d\n", numSquares)
 	grid := make([][]int, numSquares*2+1)
 	for i := range grid {
 		grid[i] = make([]int, numSquares*2+1)
@@ -81,7 +76,6 @@ func firstHalf(desiredValue int, value int, grid [][]int) (int, int) {
 			}
 			value--
 		}
-
 	}
 
 	return qx, qy
@@ -105,7 +99,6 @@ func calculateWalkingDistance(desiredValue int, startVal int, grid [][]int) int 
 	ySum := math.Abs(float64(py) - float64(qy))
 
 	distance := int(xSum + ySum)
-	fmt.Println(qx, qy)
 
 	return distance
 }
@@ -127,7 +120,6 @@ func calculateSumOfAdjacents(maxVal int) int {
 			y++
 			grid[y][x] = getSumOfAdjacents(grid, x, y)
 			if grid[y][x] > maxVal {
-				fmt.Printf("Result: %d\n", grid[y][x])
 				return grid[y][x]
 			}
 		}
@@ -137,7 +129,6 @@ func calculateSumOfAdjacents(maxVal int) int {
 			x--
 			grid[y][x] = getSumOfAdjacents(grid, x, y)
 			if grid[y][x] > maxVal {
-				fmt.Printf("Result: %d\n", grid[y][x])
 				return grid[y][x]
 			}
 		}
@@ -147,7 +138,6 @@ func calculateSumOfAdjacents(maxVal int) int {
 			y--
 			grid[y][x] = getSumOfAdjacents(grid, x, y)
 			if grid[y][x] > maxVal {
-				fmt.Printf("Result: %d\n", grid[y][x])
 				return grid[y][x]
 			}
 		}
@@ -157,7 +147,6 @@ func calculateSumOfAdjacents(maxVal int) int {
 			x++
 			grid[y][x] = getSumOfAdjacents(grid, x, y)
 			if grid[y][x] > maxVal {
-				fmt.Printf("Result: %d\n", grid[y][x])
 				return grid[y][x]
 			}
 		}
@@ -167,24 +156,15 @@ func calculateSumOfAdjacents(maxVal int) int {
 
 func getSumOfAdjacents(grid [][]int, x, y int) int {
 	sum := 0
-	fmt.Printf("x:%d ,y:%d \n", x, y)
 
 	sum += grid[y][x+1]
-	fmt.Printf("val:%d  sum1: %d\n", grid[y][x+1], sum)
 	sum += grid[y+1][x+1]
-	fmt.Printf("val:%d sum2: %d\n", grid[y+1][x+1], sum)
 	sum += grid[y+1][x]
-	fmt.Printf("val:%d sum3: %d\n", grid[y+1][x], sum)
 	sum += grid[y+1][x-1]
-	fmt.Printf("val:%d sum4: %d\n", grid[y+1][x-1], sum)
 	sum += grid[y][x-1]
-	fmt.Printf("val:%d sum5: %d\n", grid[y][x-1], sum)
 	sum += grid[y-1][x-1]
-	fmt.Printf("val:%d sum6: %d\n", grid[y-1][x-1], sum)
 	sum += grid[y-1][x]
-	fmt.Printf("val:%d sum7: %d\n", grid[y-1][x], sum)
 	sum += grid[y-1][x+1]
-	fmt.Printf("val:%d sum8: %d\n\n", grid[y-1][x+1], sum)
 
 	return sum
 }

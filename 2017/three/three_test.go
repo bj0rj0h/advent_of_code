@@ -17,7 +17,6 @@ func TestGenerateGrid(t *testing.T) {
 		t.Errorf("Expected: %d Got: %d", expected, len(grid))
 	}
 }
-
 func TestCalcGridSize(t *testing.T) {
 	result := calcGridSize(23, 0, 1)
 	expected := 2
@@ -25,7 +24,6 @@ func TestCalcGridSize(t *testing.T) {
 		t.Errorf("Expected: %d Got: %d", expected, result)
 	}
 }
-
 func TestCalculateWalkingDistance_1_PASS(t *testing.T) {
 	startVal := 1
 	grid := generateGrid(startVal)
@@ -35,7 +33,6 @@ func TestCalculateWalkingDistance_1_PASS(t *testing.T) {
 		t.Errorf("Expected: %d Got: %d", expected, result)
 	}
 }
-
 func TestCalculateWalkingDistance_12_PASS(t *testing.T) {
 	startVal := 12
 	grid := generateGrid(startVal)
@@ -45,7 +42,6 @@ func TestCalculateWalkingDistance_12_PASS(t *testing.T) {
 		t.Errorf("Expected: %d Got: %d", expected, result)
 	}
 }
-
 func TestCalculateWalkingDistance_23_PASS(t *testing.T) {
 	startVal := 23
 	grid := generateGrid(startVal)
@@ -90,7 +86,6 @@ func TestPopulateGrid(t *testing.T) {
 
 	fmt.Println("done")
 }
-
 func TestCalculateSumOfAdjacents23_PASS(t *testing.T) {
 	maxVal := 23
 	result := calculateSumOfAdjacents(maxVal)
@@ -98,7 +93,6 @@ func TestCalculateSumOfAdjacents23_PASS(t *testing.T) {
 	if result != 25 {
 		t.Errorf("Expected result to be: %d Got: %d", 25, result)
 	}
-
 }
 func TestCalculateSumOfAdjacents54_PASS(t *testing.T) {
 	maxVal := 54
