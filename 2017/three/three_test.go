@@ -126,3 +126,13 @@ func TestCalculateSumOfAdjacents266330_PASS(t *testing.T) {
 		t.Errorf("Expected result to be: %d Got: %d", expected, result)
 	}
 }
+
+func TestTmp(t *testing.T) {
+	desiredValue := 23
+	grid := generateGrid(desiredValue)
+	printGrid(grid)
+	fmt.Printf("grid size%d\n", len(grid))
+	tmpGrid := fillGrid(grid, desiredValue)
+	printGrid(tmpGrid)
+	t.Errorf("fail")
+}
