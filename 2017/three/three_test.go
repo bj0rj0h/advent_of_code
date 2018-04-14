@@ -6,12 +6,14 @@ import (
 )
 
 func TestGenerateGrid(t *testing.T) {
-	grid := generateGrid(23)
+	p := incrementalPolicy{0}
+	grid := generateGrid(23, p)
 	expected := 5
 	if expected != len(grid) {
 		t.Errorf("Expected: %d Got: %d", expected, len(grid))
 	}
-	grid = generateGrid(26)
+	p = incrementalPolicy{0}
+	grid = generateGrid(26, p)
 	expected = 7
 	if expected != len(grid) {
 		t.Errorf("Expected: %d Got: %d", expected, len(grid))
@@ -26,16 +28,20 @@ func TestCalcGridSize(t *testing.T) {
 }
 func TestCalculateWalkingDistance_1_PASS(t *testing.T) {
 	startVal := 1
-	grid := generateGrid(startVal)
+	p := incrementalPolicy{0}
+	grid := generateGrid(startVal, p)
+	printGrid(grid)
 	result := calculateWalkingDistance(1, startVal, grid)
 	expected := 0
 	if expected != result {
 		t.Errorf("Expected: %d Got: %d", expected, result)
 	}
 }
+
 func TestCalculateWalkingDistance_12_PASS(t *testing.T) {
 	startVal := 12
-	grid := generateGrid(startVal)
+	p := incrementalPolicy{0}
+	grid := generateGrid(startVal, p)
 	result := calculateWalkingDistance(startVal, 25, grid)
 	expected := 3
 	if expected != result {
@@ -44,7 +50,8 @@ func TestCalculateWalkingDistance_12_PASS(t *testing.T) {
 }
 func TestCalculateWalkingDistance_23_PASS(t *testing.T) {
 	startVal := 23
-	grid := generateGrid(startVal)
+	p := incrementalPolicy{0}
+	grid := generateGrid(startVal, p)
 	gridMax := len(grid) * len(grid)
 	result := calculateWalkingDistance(startVal, gridMax, grid)
 	expected := 2
@@ -54,7 +61,8 @@ func TestCalculateWalkingDistance_23_PASS(t *testing.T) {
 }
 func TestCalculateWalkingDistance_16_PASS(t *testing.T) {
 	startVal := 16
-	grid := generateGrid(startVal)
+	p := incrementalPolicy{0}
+	grid := generateGrid(startVal, p)
 	gridMax := len(grid) * len(grid)
 	result := calculateWalkingDistance(startVal, gridMax, grid)
 	expected := 3
@@ -64,7 +72,8 @@ func TestCalculateWalkingDistance_16_PASS(t *testing.T) {
 }
 func TestCalculateWalkingDistance_18_PASS(t *testing.T) {
 	startVal := 18
-	grid := generateGrid(startVal)
+	p := incrementalPolicy{0}
+	grid := generateGrid(startVal, p)
 	gridMax := len(grid) * len(grid)
 	result := calculateWalkingDistance(startVal, gridMax, grid)
 	expected := 3
@@ -73,7 +82,8 @@ func TestCalculateWalkingDistance_18_PASS(t *testing.T) {
 	}
 }
 func TestPopulateGrid(t *testing.T) {
-	grid := generateGrid(12)
+	p := incrementalPolicy{0}
+	grid := generateGrid(12, p)
 	expectedQ1, expectedQ2 := 4, 3
 	q1, q2 := firstHalf(12, 25, grid)
 
@@ -129,10 +139,11 @@ func TestCalculateSumOfAdjacents266330_PASS(t *testing.T) {
 
 func TestTmp(t *testing.T) {
 	desiredValue := 23
-	grid := generateGrid(desiredValue)
+
+	p := incrementalPolicy{0}
+	grid := generateGrid(desiredValue, p)
 	printGrid(grid)
 	fmt.Printf("grid size%d\n", len(grid))
-	p := incrementalPolicy{1}
 	// fmt.Printf("test:  %d\n", p.getNextValue())
 	// p.value++
 	// fmt.Printf("test:  %d\n", p.getNextValue())

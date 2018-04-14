@@ -7,22 +7,25 @@ import (
 //Run is the main entry point for day 3
 func Run() {
 	desiredValue := 265149
-	grid := generateGrid(desiredValue)
-	//p := incrementalPolicy{1}
-	//tmpGrid := fillGrid(grid, 0, p)
-	//printGrid(tmpGrid)
+	p := incrementalPolicy{1}
+	grid := generateGrid(desiredValue, p)
+	tmpGrid := fillGrid(grid, desiredValue, p)
+	printGrid(tmpGrid)
 	gridMax := len(grid) * len(grid)
 	distance := calculateWalkingDistance(desiredValue, gridMax, grid)
 	fmt.Printf("THREE-1: Result is:%d\n", distance)
 	fmt.Printf("THREE-2: Result is:%d\n", calculateSumOfAdjacents(265149))
 }
 
-func generateGrid(max int) [][]int {
+func generateGrid(max int, p policy) [][]int {
 	numSquares := calcGridSize(max, 0, 1)
 	grid := make([][]int, numSquares*2+1)
 	for i := range grid {
 		grid[i] = make([]int, numSquares*2+1)
 	}
+
+	fillGrid(grid, max, p)
+
 	return grid
 }
 
