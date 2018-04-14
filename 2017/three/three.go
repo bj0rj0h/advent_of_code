@@ -8,8 +8,9 @@ import (
 func Run() {
 	desiredValue := 265149
 	grid := generateGrid(desiredValue)
-	tmpGrid := fillGrid(grid, 0)
-	printGrid(tmpGrid)
+	//p := incrementalPolicy{1}
+	//tmpGrid := fillGrid(grid, 0, p)
+	//printGrid(tmpGrid)
 	gridMax := len(grid) * len(grid)
 	distance := calculateWalkingDistance(desiredValue, gridMax, grid)
 	fmt.Printf("THREE-1: Result is:%d\n", distance)

@@ -132,7 +132,11 @@ func TestTmp(t *testing.T) {
 	grid := generateGrid(desiredValue)
 	printGrid(grid)
 	fmt.Printf("grid size%d\n", len(grid))
-	tmpGrid := fillGrid(grid, desiredValue)
+	p := incrementalPolicy{1}
+	// fmt.Printf("test:  %d\n", p.getNextValue())
+	// p.value++
+	// fmt.Printf("test:  %d\n", p.getNextValue())
+	tmpGrid := fillGrid(grid, desiredValue, p)
 	printGrid(tmpGrid)
 	t.Errorf("fail")
 }
